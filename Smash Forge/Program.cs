@@ -22,12 +22,12 @@ namespace SmashForge
             Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
             string[] args = Environment.GetCommandLineArgs();
             MainForm.executableDir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
-            //If the update has been installed and there is an update for the updater then run it
-            if (Directory.Exists(Path.Combine(MainForm.executableDir, "new_updater/")))
-            {
-                Directory.Delete(Path.Combine(MainForm.executableDir, "updater/"), true);
-                Directory.Move(Path.Combine(MainForm.executableDir, "new_updater/"), Path.Combine(MainForm.executableDir, "updater/"));
-            }
+            ////If the update has been installed and there is an update for the updater then run it
+            //if (Directory.Exists(Path.Combine(MainForm.executableDir, "new_updater/")))
+            //{
+            //    Directory.Delete(Path.Combine(MainForm.executableDir, "updater/"), true);
+            //    Directory.Move(Path.Combine(MainForm.executableDir, "new_updater/"), Path.Combine(MainForm.executableDir, "updater/"));
+            //}
 
             OpenTK.Toolkit.Init(new OpenTK.ToolkitOptions() { Backend = OpenTK.PlatformBackend.PreferNative });
 
@@ -52,6 +52,12 @@ namespace SmashForge
                 List<string> args = new List<string>();
                 foreach (string arg in e.CommandLine)
                     args.Add(arg);
+                if (e.CommandLine.Count > 1)
+                {
+                    SmashForge.MainForm.Instance.AutoGenerateAnim = true;
+                }
+                //args.Add("F:/BotW-SBFRES-to-FBX/animextraction/Database/Animal_Bear/Animal_Bear_Animation.sbfres");
+                //SmashForge.MainForm.Instance.AutoGenerateAnim = true;
                 SmashForge.MainForm.Instance.filesToOpen = args.ToArray();
             }
 

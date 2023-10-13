@@ -12,6 +12,25 @@ namespace SmashForge
 
         public static ImageList iconList = new ImageList();
 
+        public void AutoExportAnim()
+        {
+            string path = "Libraries\\SmashForge\\animextractions";
+            foreach (TreeNode b in treeView1.Nodes)
+            {
+                foreach (TreeNode v in b.Nodes)
+                {
+                    foreach (TreeNode f in v.Nodes)
+                    {
+                        foreach (TreeNode a in f.Nodes)
+                        {
+                            if (a is Animation)
+                                ANIM.CreateANIM(path + "\\" + a.Text + ".anim", ((Animation)a), Runtime.TargetVbn);
+                        }
+                    }
+                }
+            }
+        }
+
         public AnimListPanel()
         {
             InitializeComponent();

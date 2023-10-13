@@ -29,6 +29,8 @@ namespace SmashForge
         public static csvHashes hashes;
         public static DockPanel dockPanel;
 
+        public bool AutoGenerateAnim = false;
+
         public WorkspaceManager Workspace { get; set; }
         public String[] filesToOpen = null;
         public ProgressAlert progress = new ProgressAlert();
@@ -112,6 +114,10 @@ namespace SmashForge
             }
 
             OpenFiles();
+            if (AutoGenerateAnim)
+            {
+                Application.Exit();
+            }
         }
 
         public void OpenFiles()
@@ -528,6 +534,11 @@ namespace SmashForge
 
                     }
                     mvp.animListPanel.treeView1.Nodes.Add(anim);
+
+                    if (AutoGenerateAnim)
+                    {
+                        mvp.animListPanel.AutoExportAnim();
+                    }
                 }
             }
 
