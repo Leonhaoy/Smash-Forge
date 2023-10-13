@@ -54,7 +54,7 @@ namespace SmashForge
         public TreeNode TShapeAnim = new TreeNode() { Text = "Shape Animations" };
         public TreeNode TSceneAnim = new TreeNode() { Text = "Scene Animations" };
         public TreeNode TEmbedded = new TreeNode() { Text = "Embedded Files" };
-
+        
         public ResFile TargetWiiUBFRES;
 
         //Wii U TreeNodes
@@ -1834,7 +1834,8 @@ namespace SmashForge
         private static VBN vbn()
         {
 
-            if (Runtime.TargetVbn == null) //Create VBN as target so we can export anims
+            if (Runtime.TargetVbn == null) //Create VBN as target so we can
+                                           //anims
                 Runtime.TargetVbn = new VBN();
 
             return Runtime.TargetVbn;
